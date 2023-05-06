@@ -10,15 +10,15 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         String numList;
-        int[] numArr = new int[10];
         do {
             System.out.println("Enter a list of 10 numbers separated by comma");
             numList = scanner.nextLine();
         } while (validation(numList));
 
         String[] splitList = numList.split(",");
+        int[] numArr = new int[splitList.length];
         for (int i = 0; i < splitList.length; i++) {
-            numArr[i] = Integer.parseInt(splitList[i]);
+            numArr[i] = Integer.parseInt(splitList[i].trim());
         }
         System.out.println("The min value on the current array is " + findMin(numArr));
         return numArr;
