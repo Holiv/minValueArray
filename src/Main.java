@@ -3,7 +3,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        readIntegers();
+        int[] arr = readIntegers();
+        reverseArr(arr);
     }
 
     public static int[] readIntegers() {
@@ -51,5 +52,26 @@ public class Main {
     public static int findMin(int[] arr) {
         Arrays.sort(arr);
         return arr[0];
+    }
+
+    private static void reverseArr(int... arr) {
+        int maxLength = arr.length - 1;
+        int halfLength = arr.length / 2;
+
+        System.out.println(Arrays.toString(arr));
+        for (int i = 0; i < halfLength; i++) {
+            int temp = arr[i];
+            arr[i] = arr[maxLength - i];
+            arr[maxLength - i] = temp;
+        }
+        System.out.println("This is the original reversed array: " + Arrays.toString(arr));
+
+
+        int[] reversedArr = new int[arr.length];
+        for(int element : arr) {
+            reversedArr[maxLength--] = element;
+        }
+        System.out.println("This is a reversed (again) copy of the original array: " + Arrays.toString(reversedArr));
+        System.out.println("The original, reversed once, still reversed: " + Arrays.toString(arr));
     }
 }
